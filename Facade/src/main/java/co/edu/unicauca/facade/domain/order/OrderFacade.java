@@ -63,7 +63,7 @@ public class OrderFacade {
      * @return cantidad de platos en la orden
      */
     public int totalDishes(){
-        return this.order.getList().size();
+        return this.order.getDetails().size();
     }
     /**
      * aun no implementado

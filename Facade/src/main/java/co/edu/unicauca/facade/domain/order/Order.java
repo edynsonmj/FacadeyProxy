@@ -33,13 +33,13 @@ public class Order {
     /**
      * lista de items "platos"
      */
-    private List<Item> list;
+    private List<Item> details;
 
     /**
      * constructor por defecto
      */
     public Order() {
-        list = new ArrayList<Item>();
+        details = new ArrayList<Item>();
         this.despatch = 1500;
     }
 
@@ -48,9 +48,10 @@ public class Order {
      * @param customer cliente
      */
     public Order(Customer customer) {
-        list = new ArrayList<Item>();
+        details = new ArrayList<Item>();
         this.customer = customer;
         this.despatch = 1500;
+        this.state = State.NEW;
     }
     
     /**
@@ -60,7 +61,7 @@ public class Order {
      */
     public void addDish(Dish dish, int amount){
         Item auxiliar = new Item(dish, amount);
-        list.add(auxiliar);
+        details.add(auxiliar);
     }
     
     /**
@@ -70,7 +71,7 @@ public class Order {
     public int calculateTotal(){
         int costo=0;
         int total=0;
-        for(Item I:this.list){
+        for(Item I:this.details){
             costo = I.getDish().getPrice() * I.getAmount();
             total += costo;
         }
@@ -109,12 +110,12 @@ public class Order {
         this.state = state;
     }
 
-    public List<Item> getList() {
-        return list;
+    public List<Item> getDetails() {
+        return details;
     }
 
-    public void setList(List<Item> list) {
-        this.list = list;
+    public void setDetails(List<Item> list) {
+        this.details = list;
     }
     
     
