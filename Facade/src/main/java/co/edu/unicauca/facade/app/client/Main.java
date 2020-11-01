@@ -5,12 +5,18 @@
  */
 package co.edu.unicauca.facade.app.client;
 
+
 import co.edu.unicauca.facade.access.Factory;
 import co.edu.unicauca.facade.access.IOrderRepository;
+import co.edu.unicauca.facade.app.proxy.IOrderService;
+import co.edu.unicauca.facade.app.proxy.OrderServiceLogger;
+import co.edu.unicauca.facade.app.proxy.ProxyClient;
 import co.edu.unicauca.facade.domain.order.Customer;
 import co.edu.unicauca.facade.domain.order.Dish;
 import co.edu.unicauca.facade.domain.order.OrderFacade;
 import co.edu.unicauca.facade.domain.order.State;
+
+
 
 /**
  *
@@ -23,6 +29,9 @@ public class Main {
      */
     public static void main(String[] args) {
         OrderFacade facade = new OrderFacade();
+
+        //El objeto proxy. Se le pasa el objeto real por el constructor
+        IOrderService orderProxy = new OrderServiceLogger(facade);
         facade.createOrder(new Customer(1, "Carlos Sanchez", "Calle 12 No. 12-12 Barrio Caldas", "3115677899", "Popayán"));
         facade.addDish(new Dish(1, "Hamburguesa vegetariana", 5000), 2);
         facade.addDish(new Dish(2, "Hamburguesa sencilla", 4000), 3);
@@ -40,6 +49,10 @@ public class Main {
         IOrderRepository repo = Factory.getInstance().getRepository("default");
         facade.save(repo);
         System.out.println("Pedido grabado con éxito en la base de datos");
+
+        //Ahora ejecutamos el cliente proxy, y le pasamos el sujeto que debe utilizar.
+        ProxyClient client = new ProxyClient(orderProxy);
+        client.createOrder();
     }
 
 }

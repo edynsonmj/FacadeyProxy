@@ -5,10 +5,24 @@
  */
 package co.edu.unicauca.facade.access;
 
+import co.edu.unicauca.facade.domain.order.OrderFacade;
+import java.util.ArrayList;
+
+
 /**
  *
  * @author EdynsonMJ
  */
 public class OrderRepositoryList implements IOrderRepository{
+    ArrayList<OrderFacade>orderFacade;
     
+    public OrderRepositoryList (){
+        orderFacade = new ArrayList<OrderFacade>();
+    }
+    public ArrayList<OrderFacade>GetAll(){
+        return orderFacade;
+    }
+    public void save (OrderFacade orderFacad){
+        orderFacade.add(orderFacad);
+    }
 }

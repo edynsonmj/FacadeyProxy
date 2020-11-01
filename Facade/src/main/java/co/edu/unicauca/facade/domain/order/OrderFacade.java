@@ -6,12 +6,13 @@
 package co.edu.unicauca.facade.domain.order;
 
 import co.edu.unicauca.facade.access.IOrderRepository;
+import co.edu.unicauca.facade.app.proxy.IOrderService;
 
 /**
  * representa la fachada para las operaciones de ordenes
  * @author Edynson Muñoz Jimenez, Juan Camilo Gonzalez Mulato
  */
-public class OrderFacade {
+public class OrderFacade implements IOrderService {
     /**
      * orden del restaurante
      */
@@ -65,12 +66,17 @@ public class OrderFacade {
     public int totalDishes(){
         return this.order.getDetails().size();
     }
-    /**
+     /**
      * aun no implementado
+     * @param repostitorio
      */
-    public void save(IOrderRepository repostitorio){
-        
+
+    @Override
+    public boolean save(IOrderRepository repo) {
+        return false;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     //SET AND GET
     
     public Order getOrder() {
@@ -80,5 +86,6 @@ public class OrderFacade {
     public void setOrder(Order order) {
         this.order = order;
     }
+   
     
 }
