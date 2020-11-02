@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package co.edu.unicauca.facade.app.proxy;
 
 import co.edu.unicauca.facade.access.IOrderRepository;
 
 
 /**
- *
- * @author Camilo Gonzalez
+ * la interfaz representa la operacion a guardar un servicio en el sistema
+ * @author Edynson Muñoz Jimenez, Juan Camilo Gonzales Mulato
  */
 public interface IOrderService {
     

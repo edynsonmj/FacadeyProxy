@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package co.edu.unicauca.facade.domain.order;
 
 /**
  * representa un plato...
+ *
  * @author edynso muñoz Jimenez, Juan Camilo gonzales mulato
  */
 public class Dish {
+
     /**
      * identificador del plato
      */
@@ -28,8 +26,10 @@ public class Dish {
      */
     public Dish() {
     }
+
     /**
      * constructor parametrizado
+     *
      * @param id identificador del plato
      * @param name nombre del plato
      * @param price precio o costo del plato
@@ -64,5 +64,5 @@ public class Dish {
     public void setPrice(int price) {
         this.price = price;
     }
-    
+
 }

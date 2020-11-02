@@ -8,24 +8,28 @@ import java.lang.System.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * representa un cliente Proxy
  *
- * @author Camilo Gonzalez
+ * @author Edynson Muñoz Jimenez, Juan Camilo Gonzales Mulato
  */
 public class ProxyClient {
 
     private IOrderService orderService;
 
+    /**
+     * Constructor Parametrizado
+     *
+     * @param orderService
+     */
     public ProxyClient(IOrderService orderService) {
         this.orderService = orderService;
     }
 
+    /**
+     * Devulve una instacia del repositorio
+     */
     public void createOrder() {
         IOrderRepository repo = Factory.getInstance().getRepository("default");
         this.orderService.save(repo);
-        /*org.slf4j.Logger logger = LoggerFactory.getLogger(OrderServiceLogger.class);
-        String message = "Pedido guardado en la base de datos";
-        logger.info("Pedido guardado en la base de datos");
-        logger.debug("Mensaje de depuración");
-        logger.error("Mensaje de error");*/
     }
 }

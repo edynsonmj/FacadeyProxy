@@ -9,11 +9,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/** 
+/**
  * representa...
+ *
  * @author Edynson Muñoz Jimenez, Juan Camilo Gonzalez Mulato
  */
 public class Order {
+
     /**
      * costo de envio
      */
@@ -45,6 +47,7 @@ public class Order {
 
     /**
      * constructor parametrizado
+     *
      * @param customer cliente
      */
     public Order(Customer customer) {
@@ -53,30 +56,33 @@ public class Order {
         this.despatch = 1500;
         this.state = State.NEW;
     }
-    
+
     /**
      * agrega un nuevo item a la orden
+     *
      * @param dish plato.
      * @param amount cantidad de platos
      */
-    public void addDish(Dish dish, int amount){
+    public void addDish(Dish dish, int amount) {
         Item auxiliar = new Item(dish, amount);
         details.add(auxiliar);
     }
-    
+
     /**
      * AUN NO IMPLEMENTADO calcula el costo total de la orden
+     *
      * @return total de la orden.
      */
-    public int calculateTotal(){
-        int costo=0;
-        int total=0;
-        for(Item I:this.details){
+    public int calculateTotal() {
+        int costo = 0;
+        int total = 0;
+        for (Item I : this.details) {
             costo = I.getDish().getPrice() * I.getAmount();
             total += costo;
         }
-        return total+this.despatch;
+        return total + this.despatch;
     }
+
     //SET AND GET
     public int getDespatch() {
         return despatch;
@@ -117,6 +123,5 @@ public class Order {
     public void setDetails(List<Item> list) {
         this.details = list;
     }
-    
-    
+
 }

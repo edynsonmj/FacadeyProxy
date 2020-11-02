@@ -7,9 +7,11 @@ package co.edu.unicauca.facade.domain.order;
 
 /**
  * representa...
+ *
  * @author Edynson Muñoz Jimenez, Juan Camilo Gonzalez Mulato
  */
 public class Item {
+
     /**
      * representa el plato
      */
@@ -27,6 +29,7 @@ public class Item {
 
     /**
      * constructor parametrizado
+     *
      * @param dish plato
      * @param amount no se que esto?
      */
@@ -51,6 +54,5 @@ public class Item {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    
-    
+
 }

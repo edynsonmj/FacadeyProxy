@@ -10,9 +10,11 @@ import co.edu.unicauca.facade.app.proxy.IOrderService;
 
 /**
  * representa la fachada para las operaciones de ordenes
+ *
  * @author Edynson Muñoz Jimenez, Juan Camilo Gonzalez Mulato
  */
 public class OrderFacade implements IOrderService {
+
     /**
      * orden del restaurante
      */
@@ -26,48 +28,58 @@ public class OrderFacade implements IOrderService {
 
     /**
      * AUN NO IMPLEMENTADO, crea una orden para un cliente
+     *
      * @param customer cliente
      */
-    public void createOrder(Customer customer){
+    public void createOrder(Customer customer) {
         order = new Order(customer);
     }
+
     /**
      * adiciona un plato a la orden
+     *
      * @param dish plato
      * @param amount cantidad de platos
      */
-    public void addDish(Dish dish, int amount){
+    public void addDish(Dish dish, int amount) {
         order.addDish(dish, amount);
     }
+
     /**
      * AUN NO IMPLEMENTADO, cambia el estado del pedido
+     *
      * @param state statado
      */
-    public void changeState(State state){
+    public void changeState(State state) {
         order.setState(state);
     }
+
     /**
      * cambia el estado de la orden a cancelado
      */
-    public void cancelOrder(){
+    public void cancelOrder() {
         this.order.setState(State.CANCELLED);
     }
+
     /**
      * calcula el costo de la orden
+     *
      * @return total de la orden (costo)
      */
-    public int calculateTotal(){
+    public int calculateTotal() {
         return this.order.calculateTotal();
     }
+
     /**
      * muestro la cantidad de platos
+     *
      * @return cantidad de platos en la orden
      */
-    public int totalDishes(){
+    public int totalDishes() {
         return this.order.getDetails().size();
     }
     //SET AND GET
-    
+
     public Order getOrder() {
         return order;
     }
@@ -79,5 +91,5 @@ public class OrderFacade implements IOrderService {
     @Override
     public void save(IOrderRepository repo) {
         repo.createOrder(this.order);
-    } 
+    }
 }
