@@ -7,23 +7,22 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author Camilo Gonzalez
+ * @author Camilo Gonzalez,
  */
 public class OrderServiceLogger implements IOrderService {
     private OrderFacade orderFacade;
 
     public OrderServiceLogger(OrderFacade orderFacade) {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      this.orderFacade = orderFacade;
     }
 
     @Override
-    public boolean save(IOrderRepository repo) {
-        if (orderFacade == null){
-            orderFacade = new OrderFacade();
-            return orderFacade.save(repo);
-        }else{
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates. 
-        }
+    public void save(IOrderRepository repo) {
+        //org.slf4j.Logger log = (org.slf4j.Logger) Logger.getAnonymousLogger();
+        org.slf4j.Logger log = LoggerFactory.getLogger(OrderServiceLogger.class);
+        repo.createOrder(orderFacade.getOrder());
+        //
+        String message = "pedido guardado en la base de datos";
+        log.info(message);
     }
-
 }

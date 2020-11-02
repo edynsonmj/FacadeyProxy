@@ -47,36 +47,25 @@ public class OrderFacade implements IOrderService {
         order.setState(state);
     }
     /**
-     * AUN NO IMPLEMENTADO
+     * cambia el estado de la orden a cancelado
      */
     public void cancelOrder(){
-        
+        this.order.setState(State.CANCELLED);
     }
     /**
-     * aun no implementado
+     * calcula el costo de la orden
      * @return total de la orden (costo)
      */
     public int calculateTotal(){
         return this.order.calculateTotal();
     }
     /**
-     * aun no implemenatado
+     * muestro la cantidad de platos
      * @return cantidad de platos en la orden
      */
     public int totalDishes(){
         return this.order.getDetails().size();
     }
-     /**
-     * aun no implementado
-     * @param repostitorio
-     */
-
-    @Override
-    public boolean save(IOrderRepository repo) {
-        return false;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     //SET AND GET
     
     public Order getOrder() {
@@ -86,6 +75,9 @@ public class OrderFacade implements IOrderService {
     public void setOrder(Order order) {
         this.order = order;
     }
-   
-    
+
+    @Override
+    public void save(IOrderRepository repo) {
+        repo.createOrder(this.order);
+    } 
 }

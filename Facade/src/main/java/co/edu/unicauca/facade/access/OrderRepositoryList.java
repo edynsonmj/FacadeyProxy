@@ -5,7 +5,7 @@
  */
 package co.edu.unicauca.facade.access;
 
-import co.edu.unicauca.facade.domain.order.OrderFacade;
+import co.edu.unicauca.facade.domain.order.Order;
 import java.util.ArrayList;
 
 
@@ -14,15 +14,18 @@ import java.util.ArrayList;
  * @author EdynsonMJ
  */
 public class OrderRepositoryList implements IOrderRepository{
-    ArrayList<OrderFacade>orderFacade;
+    ArrayList<Order> ordenes;
     
     public OrderRepositoryList (){
-        orderFacade = new ArrayList<OrderFacade>();
+        ordenes = new ArrayList<Order>();
     }
-    public ArrayList<OrderFacade>GetAll(){
-        return orderFacade;
+    @Override
+    public ArrayList<Order>GetAll(){
+        return ordenes;
     }
-    public void save (OrderFacade orderFacad){
-        orderFacade.add(orderFacad);
+    
+    @Override
+    public void createOrder(Order order) {
+        ordenes.add(order);
     }
 }

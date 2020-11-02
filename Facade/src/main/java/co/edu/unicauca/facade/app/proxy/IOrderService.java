@@ -14,6 +14,5 @@ import co.edu.unicauca.facade.access.IOrderRepository;
  */
 public interface IOrderService {
     
-   boolean  save(IOrderRepository repo);
-        
+   public void  save(IOrderRepository repo);
 }
